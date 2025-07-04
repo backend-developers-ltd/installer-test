@@ -6,7 +6,7 @@ set -x
 
 # Default values for arguments
 ENV_NAME="${1:-prod}"
-WORKING_DIRECTORY="${2:-~/test-validator/}"
+WORKING_DIRECTORY="${2:-$HOME/test-validator/}"
 
 mkdir -p "${WORKING_DIRECTORY}"
 

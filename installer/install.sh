@@ -5,7 +5,7 @@ set -euo pipefail
 
 # Default values for arguments
 ENV_NAME="${1:-prod}"
-WORKING_DIRECTORY="${2:-~/test-validator/}"
+WORKING_DIRECTORY="${2:-$HOME/test-validator/}"
 
 # Ensure the working directory exists
 mkdir -p "${WORKING_DIRECTORY}"
@@ -16,23 +16,23 @@ if [ ! -f "${ENV_FILE}" ]; then
     echo "Creating .env file..."
 
     # Prompt for user inputs with default values
-    read -p "Enter BITTENSOR_NETUID [9999]: " BITTENSOR_NETUID
+    read -p "Enter BITTENSOR_NETUID [9999]: " BITTENSOR_NETUID </dev/tty
     BITTENSOR_NETUID=${BITTENSOR_NETUID:-9999}
 
-    read -p "Enter BITTENSOR_NETWORK [finney]: " BITTENSOR_NETWORK
+    read -p "Enter BITTENSOR_NETWORK [finney]: " BITTENSOR_NETWORK  </dev/tty
     BITTENSOR_NETWORK=${BITTENSOR_NETWORK:-finney}
 
-    read -p "Enter HOST_WALLET_DIR [~/.bittensor/wallets]: " HOST_WALLET_DIR
+    read -p "Enter HOST_WALLET_DIR [~/.bittensor/wallets]: " HOST_WALLET_DIR  </dev/tty
     HOST_WALLET_DIR=${HOST_WALLET_DIR:-~/.bittensor/wallets}
 
-    read -p "Enter BITTENSOR_WALLET_NAME [validator]: " BITTENSOR_WALLET_NAME
+    read -p "Enter BITTENSOR_WALLET_NAME [validator]: " BITTENSOR_WALLET_NAME  </dev/tty
     BITTENSOR_WALLET_NAME=${BITTENSOR_WALLET_NAME:-validator}
 
-    read -p "Enter BITTENSOR_WALLET_HOTKEY_NAME [default]: " BITTENSOR_WALLET_HOTKEY_NAME
+    read -p "Enter BITTENSOR_WALLET_HOTKEY_NAME [default]: " BITTENSOR_WALLET_HOTKEY_NAME  </dev/tty
     BITTENSOR_WALLET_HOTKEY_NAME=${BITTENSOR_WALLET_HOTKEY_NAME:-default}
 
     # Generate a random string for SECRET_KEY
-    SECRET_KEY=$(openssl rand -base64 64)
+    SECRET_KEY=$(openssl rand -base64 64 | tr -d '\n\r\t ')
 
     # Create the .env file
     cat > "${ENV_FILE}" << EOL
