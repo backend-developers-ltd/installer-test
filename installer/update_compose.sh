@@ -7,6 +7,8 @@ set -euo pipefail
 ENV_NAME="${1:-prod}"
 WORKING_DIRECTORY="${2:-~/test-validator/}"
 
+mkdir -p "${WORKING_DIRECTORY}"
+
 # Ensure we're in the working directory
 cd "${WORKING_DIRECTORY}"
 
