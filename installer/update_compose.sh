@@ -2,6 +2,7 @@
 # Script to update docker-compose.yml and restart services if needed
 
 set -euo pipefail
+set -x
 
 # Default values for arguments
 ENV_NAME="${1:-prod}"
