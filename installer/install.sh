@@ -10,6 +10,8 @@ WORKING_DIRECTORY="${2:-$HOME/test-validator/}"
 # Ensure the working directory exists
 mkdir -p "${WORKING_DIRECTORY}"
 
+WORKING_DIRECTORY=$(realpath "${WORKING_DIRECTORY}")
+
 # Check if .env file exists in the working directory
 ENV_FILE="${WORKING_DIRECTORY}/.env"
 if [ ! -f "${ENV_FILE}" ]; then
